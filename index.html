@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vecalss Private 1-on-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,500&display=swap">
+<style>
+/* Layout: a walk down the beach — sky hero, sea band, then sand sections, each guided by the duck mascot. Single committed look (same in light & dark). */
+:root{
+  --sky:#3f8f8c; --sky-2:#6bb3a6; --sea:#58b7a6; --sea-deep:#2f8a83;
+  --sand:#efd9b0; --sand-2:#e6c995; --cream:#fff8ea;
+  --duck:#0d4a3a; --duck-2:#14634d; --ink:#0f2a24; --muted:#4a5f57;
+  --sun:#f6c445; --sun-2:#e09b2d; --coral:#e3836b;
+  --display:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:8px}
+
+/* sticker headline, like the ad posters */
+.sticker{color:var(--sun);-webkit-text-stroke:0;text-shadow:
+  3px 0 var(--duck),-3px 0 var(--duck),0 3px var(--duck),0 -3px var(--duck),
+  2px 2px var(--duck),-2px -2px var(--duck),2px -2px var(--duck),-2px 2px var(--duck),
+  6px 7px 0 var(--duck)}
+.sticker.white{color:var(--cream)}
+.eyebrow{display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;background:var(--duck);color:var(--sun);padding:6px 12px;border-radius:999px}
+
+/* NAV */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(63,143,140,.92);backdrop-filter:blur(8px);border-bottom:3px solid var(--duck)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+.brand img{width:44px;height:44px}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--sun);text-shadow:2px 2px 0 var(--duck)}
+.brand small{display:block;font-size:.6rem;letter-spacing:.2em;color:var(--cream);font-weight:700;margin-top:-4px}
+.navlinks{display:flex;gap:18px;align-items:center}
+.navlinks a{color:var(--cream);text-decoration:none;font-weight:700;font-size:.92rem}
+.navlinks a:hover{color:var(--sun)}
+@media (max-width:760px){.navlinks a:not(.btn){display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:800;text-decoration:none;border:3px solid var(--duck);border-radius:999px;padding:12px 22px;background:var(--sun);color:var(--duck);box-shadow:4px 5px 0 var(--duck);transition:transform .15s,box-shadow .15s;cursor:pointer;font-size:1rem}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 7px 0 var(--duck)}
+.btn:active{transform:translate(3px,4px);box-shadow:1px 1px 0 var(--duck)}
+.btn.ghost{background:var(--cream)}
+.btn.sm{padding:8px 16px;font-size:.88rem;box-shadow:3px 3px 0 var(--duck)}
+
+/* HERO */
+.hero{position:relative;background:linear-gradient(180deg,var(--sky) 0%,var(--sky-2) 78%,var(--sea) 100%);overflow:hidden;padding-block:56px 0}
+.cloud{position:absolute;background:#c9ecd9;border-radius:999px;opacity:.75}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud.c1{width:180px;height:44px;top:70px;left:-30px}
+.cloud.c1::before{width:80px;height:80px;top:-40px;left:40px}.cloud.c1::after{width:56px;height:56px;top:-26px;left:100px}
+.cloud.c2{width:220px;height:50px;top:150px;right:-50px;animation:drift 26s ease-in-out infinite alternate}
+.cloud.c2::before{width:96px;height:96px;top:-50px;left:50px}.cloud.c2::after{width:66px;height:66px;top:-30px;left:130px}
+@keyframes drift{to{transform:translateX(-60px)}}
+.sun{position:absolute;width:110px;height:110px;border-radius:50%;background:var(--sun);top:36px;right:16%;box-shadow:0 0 0 14px rgba(246,196,69,.25),0 0 0 30px rgba(246,196,69,.12)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:end}
+.hero-copy{padding-bottom:110px;min-width:0}
+.hero h1{font-size:clamp(3.2rem,9vw,6.6rem)}
+.hero h1 .line2{display:block;font-size:.66em;margin-top:6px}
+.lead{margin-top:22px;max-width:56ch;font-size:1.08rem;color:var(--cream);font-weight:500}
+.hl{background:var(--cream);color:var(--duck-2);font-weight:800;padding:0 5px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{font-family:var(--display);font-size:1.15rem;background:var(--duck);color:var(--cream);padding:6px 16px;border-radius:12px;border:2px solid var(--cream);transform:rotate(-2deg)}
+.tag:nth-child(2){transform:rotate(1.5deg);background:var(--coral)}
+.tag:nth-child(3){transform:rotate(-1deg);background:var(--sun-2)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.hero-duck{position:relative;align-self:end;justify-self:center;width:min(380px,100%);padding-bottom:60px}
+.hero-duck img{width:100%;animation:bob 3.4s ease-in-out infinite;transform-origin:50% 90%;cursor:pointer}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+.bubble{position:absolute;top:-6px;left:-30px;background:var(--cream);border:3px solid var(--duck);border-radius:20px;padding:12px 16px;font-weight:700;font-size:.95rem;max-width:230px;box-shadow:4px 4px 0 var(--duck);z-index:2;line-height:1.35}
+.bubble::after{content:"";position:absolute;bottom:-14px;right:40px;width:20px;height:20px;background:var(--cream);border-right:3px solid var(--duck);border-bottom:3px solid var(--duck);transform:rotate(45deg)}
+.waves{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none}
+.waves svg{position:absolute;bottom:0;width:200%;height:100%;animation:wave 14s linear infinite}
+.waves svg.back{animation-duration:22s;opacity:.6;bottom:18px}
+@keyframes wave{to{transform:translateX(-50%)}}
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding-bottom:0}
+  .hero-duck{width:min(280px,80%);padding-bottom:90px}
+  .bubble{left:auto;right:-10px;top:-20px;max-width:190px;font-size:.85rem}
+  .sun{width:70px;height:70px;right:8%}
+}
+
+/* generic section */
+section{position:relative}
+.sec{padding-block:88px}
+.sec-head{display:flex;align-items:flex-end;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(2.2rem,5.5vw,3.6rem)}
+.sec-head .sub{max-width:58ch;color:var(--muted);margin-top:12px;font-weight:500}
+.sec-head > div{min-width:0;flex:1 1 380px}
+.sec-duck{width:150px;flex:0 0 auto}
+
+/* PROBLEMS */
+.problems{background:var(--sand)}
+.prob-layout{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start}
+.prob-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.prob{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:3px solid var(--duck);border-radius:16px;padding:16px;cursor:pointer;transition:transform .15s,background .15s;box-shadow:3px 4px 0 var(--sand-2);font-weight:600;line-height:1.4;user-select:none}
+.prob:hover{transform:rotate(-.6deg) translateY(-2px)}
+.prob input{position:absolute;opacity:0;pointer-events:none}
+.box{flex:0 0 28px;height:28px;border:3px solid var(--duck);border-radius:8px;background:#fff;display:grid;place-items:center;font-family:var(--display);color:var(--duck);font-size:1.1rem}
+.prob:has(input:checked){background:var(--sun);box-shadow:3px 4px 0 var(--duck)}
+.prob:has(input:checked) .box{background:var(--duck);color:var(--sun)}
+.prob:has(input:focus-visible){outline:3px solid var(--duck);outline-offset:3px}
+.prob:last-child{grid-column:1/-1}
+.verdict{position:sticky;top:90px;background:var(--duck);color:var(--cream);border-radius:var(--r);padding:22px;text-align:center;border:3px solid var(--duck);box-shadow:6px 6px 0 var(--sand-2)}
+.verdict img{width:190px;margin:-70px auto 6px;transition:transform .3s}
+.verdict .count{font-family:var(--display);font-size:3rem;color:var(--sun);line-height:1}
+.verdict .count small{font-size:1.2rem;color:var(--cream)}
+.verdict p{margin-top:8px;font-weight:600;min-height:3.2em}
+.verdict .btn{margin-top:14px}
+.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(.8) rotate(-6deg)}100%{transform:scale(1)}}
+@media (max-width:860px){.prob-layout{grid-template-columns:1fr}.verdict{position:relative;top:0;margin-top:70px}}
+@media (max-width:560px){.prob-list{grid-template-columns:1fr}}
+
+/* SOLUTION */
+.solution{background:var(--sea-deep);color:var(--cream);overflow:hidden}
+.solution::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.08) 0 2px,transparent 3px) 0 0/38px 38px;pointer-events:none}
+.solution .sec-head .sub{color:#d9f0e8}
+.quote{font-family:var(--display);font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.15;max-width:22ch;color:var(--cream)}
+.quote em{font-style:normal;color:var(--sun)}
+.sol-top{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-bottom:44px}
+.sol-top img{width:240px}
+.sol-top p.body{margin-top:14px;max-width:60ch;color:#d9f0e8}
+.facil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;position:relative}
+.fcard{background:var(--cream);color:var(--ink);border-radius:var(--r);padding:22px;border:3px solid var(--duck);box-shadow:5px 6px 0 var(--duck);display:flex;flex-direction:column;gap:8px;min-width:0}
+.fcard:nth-child(odd){transform:rotate(-.6deg)}
+.fcard:nth-child(even){transform:rotate(.6deg)}
+.fcard .ic{width:52px;height:52px;border-radius:14px;background:var(--sun);border:3px solid var(--duck);display:grid;place-items:center}
+.fcard .ic svg{width:28px;height:28px;stroke:var(--duck);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fcard h3{font-size:1.45rem;color:var(--duck)}
+.fcard p{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.facil{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.facil{grid-template-columns:1fr}.sol-top{grid-template-columns:1fr}.sol-top img{width:180px}}
+
+/* SCHOOLS marquee */
+.schools{background:var(--duck);color:var(--cream);padding-block:28px;border-block:4px solid var(--sun)}
+.schools .label{text-align:center;font-weight:700;margin-bottom:14px;padding-inline:20px}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.chip{font-family:var(--display);font-size:1.3rem;white-space:nowrap;background:var(--duck-2);border:2px solid var(--sea);padding:8px 18px;border-radius:999px}
+.chip.alt{background:var(--sun);color:var(--duck);border-color:var(--sun)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ALUMNI */
+.alumni{background:var(--sand)}
+.uni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.uni{background:var(--cream);border:3px solid var(--duck);border-radius:var(--r);padding:20px;box-shadow:4px 5px 0 var(--sand-2);min-width:0;position:relative;overflow:hidden}
+.uni .abbr{font-family:var(--display);font-size:2.4rem;color:var(--duck);line-height:1}
+.uni .name{font-weight:700;font-size:.9rem;color:var(--muted);margin-top:4px}
+.uni .progs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.uni .progs span{font-size:.8rem;font-weight:700;background:var(--sand);border:2px solid var(--sand-2);border-radius:8px;padding:3px 9px}
+.uni .cap{position:absolute;right:-10px;top:-8px;font-family:var(--display);font-size:5rem;color:var(--sand);line-height:1;z-index:0;pointer-events:none}
+.uni > *:not(.cap){position:relative;z-index:1}
+.more{margin-top:20px;font-style:italic;color:var(--muted);font-weight:500}
+
+/* PRICING */
+.pricing{background:linear-gradient(180deg,var(--sand) 0%,var(--sand-2) 100%)}
+.price-layout{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center}
+.price-duck{position:relative;text-align:center}
+.price-duck img{width:240px;margin:0 auto}
+.price-duck .bubble{position:relative;left:0;top:0;display:inline-block;margin-bottom:12px;max-width:none}
+.price-duck .bubble::after{left:50%;right:auto;margin-left:-10px}
+.plans{display:grid;gap:14px}
+.plan{display:grid;grid-template-columns:minmax(0,auto) 1fr auto;align-items:center;gap:0;background:var(--cream);border:3px solid var(--duck);border-radius:999px;cursor:pointer;transition:transform .15s;box-shadow:4px 5px 0 var(--duck);text-align:left;font:inherit;color:inherit;padding:0;width:100%}
+.plan:hover{transform:translateX(6px)}
+.plan .amt{background:var(--duck);color:var(--sun);font-family:var(--display);font-size:clamp(1.5rem,3.6vw,2.2rem);padding:12px 26px;border-radius:999px;margin:-3px 0 -3px -3px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.plan .meet{padding:10px 18px;font-weight:800;line-height:1.25}
+.plan .meet small{display:block;font-weight:500;color:var(--muted);font-size:.82rem}
+.plan .pick{margin-right:12px;width:34px;height:34px;border-radius:50%;border:3px solid var(--duck);display:grid;place-items:center;font-family:var(--display);color:transparent;transition:.15s}
+.plan[aria-pressed="true"]{background:var(--sun);transform:translateX(6px)}
+.plan[aria-pressed="true"] .pick{background:var(--duck);color:var(--sun)}
+.choice{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.choice p{font-weight:700}
+@media (max-width:820px){.price-layout{grid-template-columns:1fr}.price-duck img{width:170px}}
+@media (max-width:520px){
+  .plan{grid-template-columns:1fr auto;border-radius:20px}
+  .plan .amt{grid-column:1/-1;border-radius:17px 17px 0 0;margin:-3px -3px 0 -3px;text-align:center}
+  .plan .meet{padding:12px 16px}
+}
+
+/* TUTORS */
+.tutors{background:var(--sky);color:var(--cream);overflow:hidden}
+.tutors .sec-head .sub{color:#dff1ea}
+.polaroids{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.pol{background:var(--cream);color:var(--ink);padding:12px 12px 14px;border-radius:6px;box-shadow:0 10px 0 -2px rgba(13,74,58,.35);transition:transform .2s;min-width:0;margin:0}
+.pol:nth-child(3n+1){transform:rotate(-2.5deg)}
+.pol:nth-child(3n+2){transform:rotate(1.5deg) translateY(10px)}
+.pol:nth-child(3n){transform:rotate(-1deg)}
+.pol:hover{transform:rotate(0) scale(1.04);z-index:2;position:relative}
+.pol .ph{overflow:hidden;border-radius:4px;aspect-ratio:6/5;background:var(--sky-2)}
+.pol .ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.pol figcaption{margin-top:10px;font-family:var(--display);font-size:1.35rem;line-height:1.05;color:var(--duck)}
+.pol figcaption span{display:block;font-family:var(--body);font-weight:700;font-size:.85rem;color:var(--muted);margin-top:2px}
+.pol .tape{position:absolute}
+@media (max-width:700px){.polaroids{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.pol figcaption{font-size:1.15rem}}
+
+/* FINAL CTA */
+.final{background:var(--sea);padding-block:80px 60px;overflow:hidden}
+.final-card{position:relative;background:var(--cream);border:4px solid var(--duck);border-radius:32px;box-shadow:10px 12px 0 var(--duck);padding:40px;display:grid;grid-template-columns:1fr 260px;gap:24px;align-items:center}
+.final-card h2{font-size:clamp(2.4rem,6vw,4.2rem)}
+.final-card p{margin-top:14px;font-weight:600;color:var(--muted);max-width:48ch}
+.final-card img{width:100%;max-width:260px;justify-self:center;animation:bob 3s ease-in-out infinite}
+.linkbox{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.linkbox code{font-family:var(--body);font-weight:800;font-size:1.05rem;background:var(--sand);border:2px dashed var(--duck);padding:10px 14px;border-radius:12px;user-select:all;word-break:break-all}
+.copied{font-weight:700;color:var(--duck-2);font-size:.9rem}
+@media (max-width:760px){.final-card{grid-template-columns:1fr;padding:28px 22px}.final-card img{max-width:180px;order:-1}}
+
+footer{background:var(--duck);color:#cfe6dc;padding-block:26px;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1.1rem}
+
+/* duck squish on click */
+.squish{animation:squish .5s ease !important}
+@keyframes squish{0%{transform:scale(1)}30%{transform:scale(1.15,.82)}60%{transform:scale(.92,1.1)}100%{transform:scale(1)}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Vecalss Learning Academy">
+      <img src="assets/duck7.png" alt="">
+      <span><b>VECALSS</b><small>LEARNING ACADEMY</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#fasilitas">Fasilitas</a>
+      <a href="#alumni">Alumni</a>
+      <a href="#paket">Paket</a>
+      <a href="#tutor">Tutor</a>
+      <a class="btn sm" href="https://bit.ly/VecalssPrivate2026" target="_blank" rel="noopener">Daftar</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1><span class="sticker">VECALSS</span><span class="line2 sticker white">PRIVATE 1-ON-1</span></h1>
+      <p class="lead">Bimbingan <span class="hl">belajar <i>online</i> private</span> bersama <span class="hl">tutor-tutor terbaik dari PTN</span> ternama di Indonesia, dirancang khusus untuk <span class="hl">persiapan SNBT, TKA, dan Ujian Mandiri.</span> Setiap sesi disesuaikan dengan kebutuhan, gaya belajar, dan target kamu.</p>
+      <div class="tags" aria-label="Persiapan ujian">
+        <span class="tag">SNBT</span><span class="tag">TKA</span><span class="tag">Ujian Mandiri</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#paket">Lihat Paket</a>
+        <a class="btn ghost" href="#masalah">Cek Kebutuhanmu</a>
+      </div>
+    </div>
+    <div class="hero-duck">
+      <div class="bubble" id="heroBubble">Halo! Di sini cuma ada kamu &amp; tutormu. Nggak ada kelas ramai.</div>
+      <img src="assets/duck7.png" alt="Maskot bebek Vecalss melambaikan sayap" id="heroDuck">
+    </div>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg class="back" viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#2f8a83" d="M0 60 Q90 20 180 60 T360 60 T540 60 T720 60 T900 60 T1080 60 T1260 60 T1440 60 V120 H0Z"/></svg>
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#efd9b0" d="M0 80 Q90 50 180 80 T360 80 T540 80 T720 80 T900 80 T1080 80 T1260 80 T1440 80 V120 H0Z"/></svg>
+  </div>
+</header>
+
+<section class="problems sec" id="masalah">
+  <div class="wrap">
+    <div class="sec-head">
+      <img class="sec-duck" src="assets/duck3.png" alt="Maskot bebek pusing">
+      <div>
+        <span class="eyebrow">Kenapa private?</span>
+        <h2 class="sticker" style="margin-top:12px">Kamu ngerasain ini juga?</h2>
+        <p class="sub">Banyak siswa datang ke Vecalss Private justru setelah ikut bimbel grup. Mereka sudah belajar, tapi masih ada yang kurang. Centang yang paling kamu rasain.</p>
+      </div>
+    </div>
+    <div class="prob-layout">
+      <div class="prob-list" id="probList">
+        <label class="prob"><input type="checkbox" id="p1"><span class="box" aria-hidden="true"></span>Sudah ikut bimbel grup, tapi masih belum paham konsep dasarnya.</label>
+        <label class="prob"><input type="checkbox" id="p2"><span class="box" aria-hidden="true"></span>Butuh jadwal belajar yang fleksibel karena aktivitas padat.</label>
+        <label class="prob"><input type="checkbox" id="p3"><span class="box" aria-hidden="true"></span>Ingin fokus di topik tertentu sesuai kebutuhan pribadi.</label>
+        <label class="prob"><input type="checkbox" id="p4"><span class="box" aria-hidden="true"></span>Merasa tertinggal dan tidak bisa mengejar materi kelas ramai.</label>
+        <label class="prob"><input type="checkbox" id="p5"><span class="box" aria-hidden="true"></span>Lebih nyaman belajar 1-on-1 langsung dengan tutor daripada di kelas grup.</label>
+        <label class="prob"><input type="checkbox" id="p6"><span class="box" aria-hidden="true"></span>Siswa expat atau pindahan yang perlu tutor bilingual.</label>
+        <label class="prob"><input type="checkbox" id="p7"><span class="box" aria-hidden="true"></span>Ingin progress yang benar-benar terukur dan dievaluasi rutin.</label>
+      </div>
+      <aside class="verdict" aria-live="polite">
+        <img src="assets/duck1.png" alt="Maskot bebek memeriksa dengan kaca pembesar" id="verdictDuck">
+        <div class="count"><span id="cnt">0</span><small> / 7</small></div>
+        <p id="verdictText">Ayo centang dulu, biar aku periksa kebutuhan belajarmu.</p>
+        <a class="btn sm" href="#fasilitas">Lihat solusinya</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="solution sec" id="fasilitas">
+  <div class="wrap">
+    <div class="sol-top">
+      <img src="assets/duck4.png" alt="Maskot bebek mempersembahkan solusi">
+      <div style="min-width:0">
+        <span class="eyebrow" style="background:var(--sun);color:var(--duck)">Di sinilah solusinya</span>
+        <p class="quote" style="margin-top:14px">Banyak siswa akhirnya sadar: mereka butuh <em>pendekatan yang lebih personal.</em></p>
+        <p class="body">Buat kamu yang sudah ikut bimbel offline tapi belum maksimal, punya aktivitas padat, atau sekolah di luar negeri dan butuh jadwal yang bisa disesuaikan, kelas one-on-one Vecalss dibuat untukmu.</p>
+      </div>
+    </div>
+    <div class="facil">
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div><h3>1 tutor untuk 1 siswa</h3><p>Fokus penuh sesuai kebutuhan dan target kamu.</p></div>
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Jadwal fleksibel</h3><p>Belajar bisa disesuaikan dengan rutinitas dan kesibukanmu.</p></div>
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Evaluasi rutin &amp; progress report</h3><p>Kamu dan orang tuamu bisa tahu sejauh mana perkembanganmu.</p></div>
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></div><h3>Live Zoom + rekaman kelas</h3><p>Kelas bisa direquest untuk direkam, jadi bisa ditonton ulang kapan aja biar makin paham.</p></div>
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 11h8M8 15h5"/></svg></div><h3>Bank soal &amp; try out</h3><p>Latihan intensif dengan soal terbaru SNBT, TKA, dan Ujian Mandiri.</p></div>
+      <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg></div><h3>Mentoring akademik &amp; mental support</h3><p>Bukan cuma diajarin materi, tapi juga dipersiapkan secara mental untuk ujian besar.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="schools">
+  <p class="label">Dipercaya mendampingi ribuan siswa, dari sekolah favorit, sekolah internasional, sampai siswa expat:</p>
+  <div class="marquee" aria-label="Asal sekolah siswa">
+    <div class="track" id="track">
+      <span class="chip">UPH College</span><span class="chip alt">Labschool</span><span class="chip">AIPL</span><span class="chip alt">Al Azhar</span><span class="chip">Insan Cendekia</span><span class="chip alt">BPK Penabur</span><span class="chip">BM400</span><span class="chip alt">Boarding School</span><span class="chip">Sekolah Indonesia Jeddah</span><span class="chip alt">Siswa Expat</span>
+    </div>
+  </div>
+</div>
+
+<section class="alumni sec" id="alumni">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Hasil nyata</span>
+        <h2 class="sticker" style="margin-top:12px">Alumni Vecalss Private diterima di…</h2>
+        <p class="sub">Dari kedokteran sampai IUP, ini sebagian kampus dan jurusan tempat alumni private kami sekarang kuliah.</p>
+      </div>
+      <img class="sec-duck" src="assets/duck1.png" alt="" style="transform:scaleX(-1)">
+    </div>
+    <div class="uni-grid">
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">UI</div><div class="name">Universitas Indonesia</div><div class="progs"><span>Kedokteran Gigi KKI</span><span>Hukum</span><span>Bisnis Kreatif</span><span>Talent Scouting – Industrial Engineering</span><span>KKI Teknik Industri</span><span>Psikologi</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">ITB</div><div class="name">Institut Teknologi Bandung</div><div class="progs"><span>FTI RI</span><span>SAPPK</span><span>FSRD</span><span>SBM – IUP</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">UNPAD</div><div class="name">Universitas Padjadjaran</div><div class="progs"><span>Kedokteran</span><span>Hukum</span><span>Hukum IUP</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">UNAIR</div><div class="name">Universitas Airlangga</div><div class="progs"><span>Kedokteran</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">ITS</div><div class="name">Institut Teknologi Sepuluh Nopember</div><div class="progs"><span>Teknik Kimia</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">UPNVJ</div><div class="name">UPN Veteran Jakarta</div><div class="progs"><span>Kedokteran</span></div></div>
+      <div class="uni"><span class="cap" aria-hidden="true">★</span><div class="abbr">UNUD</div><div class="name">Universitas Udayana</div><div class="progs"><span>Kedokteran</span></div></div>
+    </div>
+    <p class="more">… dan masih banyak lagi.</p>
+  </div>
+</section>
+
+<section class="pricing sec" id="paket">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Pilihan paket</span>
+        <h2 class="sticker" style="margin-top:12px">PILIH PAKET PRIVATE ONE ON ONE</h2>
+        <p class="sub">Semua paket sudah termasuk seluruh fasilitas one-on-one. Bedanya cuma di jumlah pertemuan.</p>
+      </div>
+    </div>
+    <div class="price-layout">
+      <div class="price-duck">
+        <div class="bubble" id="priceBubble">Hmm… mau yang mana ya?</div>
+        <img src="assets/duck5.png" alt="Maskot bebek berpikir" id="priceDuck">
+      </div>
+      <div>
+        <div class="plans" id="plans">
+          <button class="plan" type="button" id="plan12" data-n="12" aria-pressed="false"><span class="amt">Rp3.000.000</span><span class="meet">12x Pertemuan Private<small>Cocok buat kejar topik tertentu</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan24" data-n="24" aria-pressed="false"><span class="amt">Rp5.600.000</span><span class="meet">24x Pertemuan Private<small>Bangun konsep dari dasar</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan30" data-n="30" aria-pressed="false"><span class="amt">Rp7.250.000</span><span class="meet">30x Pertemuan Private<small>Pendampingan lebih panjang</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan60" data-n="60" aria-pressed="false"><span class="amt">Rp14.500.000</span><span class="meet">60x Pertemuan Private<small>Persiapan penuh sampai hari ujian</small></span><span class="pick" aria-hidden="true">✓</span></button>
+        </div>
+        <div class="choice">
+          <p id="choiceText">Klik salah satu paket untuk memilih.</p>
+          <a class="btn" href="https://bit.ly/VecalssPrivate2026" target="_blank" rel="noopener" id="choiceBtn">Daftar Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tutors sec" id="tutor">
+  <div class="wrap">
+    <div class="sec-head">
+      <img class="sec-duck" src="assets/duck6.png" alt="Maskot bebek membaca buku">
+      <div>
+        <span class="eyebrow" style="background:var(--sun);color:var(--duck)">Behind our academic crew</span>
+        <h2 class="sticker" style="margin-top:12px">The Scholars</h2>
+        <p class="sub">Tutor-tutor dari PTN ternama yang pernah ada di posisimu, dan tahu persis cara lolosnya.</p>
+      </div>
+    </div>
+    <div class="polaroids">
+      <figure class="pol"><div class="ph"><img src="assets/tutor1.jpg" alt="Nauval"></div><figcaption>Nauval<span>Fisika UI</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor2.jpg" alt="Nadiv"></div><figcaption>Nadiv<span>Psikologi UI</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor3.jpg" alt="Kaori"></div><figcaption>Kaori<span>Kedokteran UPN</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor4.jpg" alt="Mufli"></div><figcaption>Mufli<span>Arsitektur ITB</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor5.jpg" alt="Adit"></div><figcaption>Adit<span>Fisika UI</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor6.jpg" alt="Dhini"></div><figcaption>Dhini<span>Hubungan Internasional Unpad</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor7.jpg" alt="Mira"></div><figcaption>Mira<span>Kedokteran UPN</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor8.jpg" alt="Abi"></div><figcaption>Abi<span>Teknik Tenaga Listrik ITB</span></figcaption></figure>
+      <figure class="pol"><div class="ph"><img src="assets/tutor9.jpg" alt="Nicho"></div><figcaption>Nicho<span>Teknik Nuklir UGM</span></figcaption></figure>
+    </div>
+    <p class="more" style="color:#dff1ea">… dan masih banyak lagi.</p>
+  </div>
+</section>
+
+<section class="final" id="daftar">
+  <div class="wrap">
+    <div class="final-card">
+      <div style="min-width:0">
+        <span class="eyebrow">Be a part of our member!</span>
+        <h2 class="sticker" style="margin-top:14px">Siap belajar berdua aja?</h2>
+        <p>Daftar lewat link di bawah, atau klik link di bio Instagram kami. Tim Vecalss akan bantu cocokkan kamu dengan tutor dan jadwal yang pas.</p>
+        <div class="linkbox">
+          <code id="link">bit.ly/VecalssPrivate2026</code>
+          <button class="btn sm ghost" type="button" id="copyBtn">Salin link</button>
+          <a class="btn sm" href="https://bit.ly/VecalssPrivate2026" target="_blank" rel="noopener">Buka link</a>
+          <span class="copied" id="copied" hidden>Tersalin!</span>
+        </div>
+      </div>
+      <img src="assets/duck8.png" alt="Maskot bebek bersemangat" id="finalDuck">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><b>VECALSS</b> Learning Academy · Private 1-on-1</span>
+    <span>Persiapan SNBT · TKA · Ujian Mandiri</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // duplicate marquee chips for a seamless loop
+  var t=document.getElementById('track'); t.innerHTML+=t.innerHTML;
+  t.querySelectorAll('.chip').forEach(function(c,i){ if(i>=10) c.setAttribute('aria-hidden','true'); });
+
+  function squish(img){ img.classList.remove('squish'); void img.offsetWidth; img.classList.add('squish');
+    img.addEventListener('animationend',function f(){ img.classList.remove('squish'); img.removeEventListener('animationend',f); }); }
+
+  // hero duck says random lines
+  var lines=["Halo! Di sini cuma ada kamu & tutormu. Nggak ada kelas ramai.","Kwek! Jadwalnya kamu yang atur.","Bingung konsep dasar? Kita ulang pelan-pelan.","Kelasnya bisa direkam, tonton ulang kapan aja!","Target PTN impian? Gas bareng tutor PTN!"];
+  var li=0, hd=document.getElementById('heroDuck'), hb=document.getElementById('heroBubble');
+  hd.addEventListener('click',function(){ li=(li+1)%lines.length; hb.textContent=lines[li]; squish(hd); });
+
+  // problem checklist -> verdict
+  var boxes=document.querySelectorAll('#probList input'), cnt=document.getElementById('cnt'),
+      vt=document.getElementById('verdictText'), vd=document.getElementById('verdictDuck');
+  var states=[
+    {img:'assets/duck1.png',txt:'Ayo centang dulu, biar aku periksa kebutuhan belajarmu.'},
+    {img:'assets/duck2.png',txt:'Hmm, ada yang bikin kesel ya? Wajar kok, kelas ramai memang begitu.'},
+    {img:'assets/duck3.png',txt:'Pusing juga ya… Kamu kayaknya butuh tutor yang fokus ke kamu.'},
+    {img:'assets/duck8.png',txt:'Fix! Kamu cocok banget sama Private 1-on-1.'}
+  ];
+  var last=-1;
+  function update(){
+    var n=0; boxes.forEach(function(b){ if(b.checked) n++; });
+    cnt.textContent=n;
+    boxes.forEach(function(b){ b.nextElementSibling.textContent=b.checked?'✓':''; });
+    var s=n===0?0:n<=2?1:n<=4?2:3;
+    if(s!==last){ vd.src=states[s].img; vt.textContent=states[s].txt; vd.classList.remove('pop'); void vd.offsetWidth; vd.classList.add('pop'); last=s; }
+  }
+  boxes.forEach(function(b){ b.addEventListener('change',update); });
+  update();
+
+  // plan picker
+  var plans=document.querySelectorAll('.plan'), ct=document.getElementById('choiceText'),
+      pb=document.getElementById('priceBubble'), pd=document.getElementById('priceDuck');
+  var say={12:'Pas buat nutup materi yang bolong!',24:'Mantap, konsepnya bakal kokoh!',30:'Wah, pendampingannya makin panjang!',60:'Full senyum sampai hari ujian!'};
+  plans.forEach(function(p){
+    p.addEventListener('click',function(){
+      plans.forEach(function(q){ q.setAttribute('aria-pressed', q===p?'true':'false'); });
+      var n=p.dataset.n;
+      ct.textContent='Pilihanmu: paket '+n+'x pertemuan ('+p.querySelector('.amt').textContent+').';
+      pb.textContent=say[n]; pd.src='assets/duck4.png'; squish(pd);
+    });
+  });
+
+  // copy link
+  var cb=document.getElementById('copyBtn'), cp=document.getElementById('copied'), lk=document.getElementById('link');
+  cb.addEventListener('click',function(){
+    function sel(){ var r=document.createRange(); r.selectNodeContents(lk); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try{
+      navigator.clipboard.writeText('https://bit.ly/VecalssPrivate2026').then(function(){ cp.textContent='Tersalin!'; cp.hidden=false; },function(){ sel(); cp.textContent='Link sudah dipilih, tekan salin.'; cp.hidden=false; });
+    }catch(e){ sel(); cp.textContent='Link sudah dipilih, tekan salin.'; cp.hidden=false; }
+  });
+
+  var fd=document.getElementById('finalDuck'); fd.addEventListener('click',function(){ squish(fd); });
+})();
+</script>
+</body>
+</html>
