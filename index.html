@@ -364,7 +364,7 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
       <div>
         <span class="eyebrow">Pilihan paket</span>
         <h2 class="sticker" style="margin-top:12px">PILIH PAKET PRIVATE ONE ON ONE</h2>
-        <p class="sub">Semua paket sudah termasuk seluruh fasilitas one-on-one. Bedanya cuma di jumlah pertemuan.</p>
+        <p class="sub">Semua paket sudah termasuk seluruh fasilitas one-on-one. Bedanya cuma di jumlah pertemuan. Untuk info biaya, hubungi kami lewat link pendaftaran.</p>
       </div>
     </div>
     <div class="price-layout">
@@ -374,10 +374,10 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
       </div>
       <div>
         <div class="plans" id="plans">
-          <button class="plan" type="button" id="plan12" data-n="12" aria-pressed="false"><span class="amt">Rp3.000.000</span><span class="meet">12x Pertemuan Private<small>Cocok buat kejar topik tertentu</small></span><span class="pick" aria-hidden="true">✓</span></button>
-          <button class="plan" type="button" id="plan24" data-n="24" aria-pressed="false"><span class="amt">Rp5.600.000</span><span class="meet">24x Pertemuan Private<small>Bangun konsep dari dasar</small></span><span class="pick" aria-hidden="true">✓</span></button>
-          <button class="plan" type="button" id="plan30" data-n="30" aria-pressed="false"><span class="amt">Rp7.250.000</span><span class="meet">30x Pertemuan Private<small>Pendampingan lebih panjang</small></span><span class="pick" aria-hidden="true">✓</span></button>
-          <button class="plan" type="button" id="plan60" data-n="60" aria-pressed="false"><span class="amt">Rp14.500.000</span><span class="meet">60x Pertemuan Private<small>Persiapan penuh sampai hari ujian</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan12" data-n="12" aria-pressed="false"><span class="amt">12x</span><span class="meet">Pertemuan Private<small>Cocok buat kejar topik tertentu</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan24" data-n="24" aria-pressed="false"><span class="amt">24x</span><span class="meet">Pertemuan Private<small>Bangun konsep dari dasar</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan30" data-n="30" aria-pressed="false"><span class="amt">30x</span><span class="meet">Pertemuan Private<small>Pendampingan lebih panjang</small></span><span class="pick" aria-hidden="true">✓</span></button>
+          <button class="plan" type="button" id="plan60" data-n="60" aria-pressed="false"><span class="amt">60x</span><span class="meet">Pertemuan Private<small>Persiapan penuh sampai hari ujian</small></span><span class="pick" aria-hidden="true">✓</span></button>
         </div>
         <div class="choice">
           <p id="choiceText">Klik salah satu paket untuk memilih.</p>
@@ -481,7 +481,7 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
     p.addEventListener('click',function(){
       plans.forEach(function(q){ q.setAttribute('aria-pressed', q===p?'true':'false'); });
       var n=p.dataset.n;
-      ct.textContent='Pilihanmu: paket '+n+'x pertemuan ('+p.querySelector('.amt').textContent+').';
+      ct.textContent='Pilihanmu: paket '+n+'x pertemuan private.';
       pb.textContent=say[n]; pd.src='assets/duck4.png'; squish(pd);
     });
   });
