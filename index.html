@@ -145,6 +145,33 @@ section{position:relative}
 @media (max-width:900px){.facil{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.facil{grid-template-columns:1fr}.sol-top{grid-template-columns:1fr}.sol-top img{width:180px}}
 
+/* SNEAK PEEK stories */
+.peek{background:var(--sand)}
+.peek-layout{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:44px;align-items:center}
+.story{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:28px;overflow:hidden;border:4px solid var(--duck);box-shadow:8px 10px 0 var(--duck);background:var(--duck);justify-self:center}
+.story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.story img.on{opacity:1}
+.bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px;z-index:2}
+.bars span{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.4);overflow:hidden}
+.bars i{display:block;height:100%;width:0;background:#fff}
+.bars span.done i{width:100%}
+.story .tap{position:absolute;top:0;bottom:0;width:40%;z-index:3;background:none;border:0;cursor:pointer}
+.story .tap.prev{left:0}.story .tap.next{right:0;width:60%}
+.peek-side{min-width:0;display:flex;flex-direction:column;gap:18px}
+.peek-cap{background:var(--cream);border:3px solid var(--duck);border-radius:18px;padding:16px 18px;box-shadow:4px 5px 0 var(--sand-2)}
+.peek-cap .tagp{display:inline-block;font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;background:var(--duck);color:var(--sun);padding:4px 10px;border-radius:999px}
+.peek-cap h3{font-size:1.5rem;color:var(--duck);margin-top:8px}
+.peek-cap p{color:var(--muted);font-weight:600;margin-top:4px}
+.thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.thumb{padding:0;border:3px solid var(--duck);border-radius:12px;overflow:hidden;aspect-ratio:9/16;cursor:pointer;background:var(--duck);opacity:.55;transition:opacity .2s,transform .2s}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb[aria-current="true"]{opacity:1;transform:translateY(-4px);box-shadow:3px 4px 0 var(--duck)}
+.peek-handles{font-weight:700;color:var(--muted)}
+.peek-handles b{color:var(--duck)}
+.peek-row{display:flex;align-items:center;gap:16px}
+.peek-row img{width:110px;flex:0 0 auto}
+@media (max-width:820px){.peek-layout{grid-template-columns:1fr}.story{max-width:300px}.thumbs{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}}
+
 /* SCHOOLS marquee */
 .schools{background:var(--duck);color:var(--cream);padding-block:28px;border-block:4px solid var(--sun)}
 .schools .label{text-align:center;font-weight:700;margin-bottom:14px;padding-inline:20px}
@@ -240,6 +267,7 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
     </a>
     <div class="navlinks">
       <a href="#fasilitas">Fasilitas</a>
+      <a href="#sneakpeek">Sneak Peek</a>
       <a href="#alumni">Alumni</a>
       <a href="#paket">Paket</a>
       <a href="#tutor">Tutor</a>
@@ -322,6 +350,37 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
       <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></div><h3>Live Zoom + rekaman kelas</h3><p>Kelas bisa direquest untuk direkam, jadi bisa ditonton ulang kapan aja biar makin paham.</p></div>
       <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 11h8M8 15h5"/></svg></div><h3>Bank soal &amp; try out</h3><p>Latihan intensif dengan soal terbaru SNBT, TKA, dan Ujian Mandiri.</p></div>
       <div class="fcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg></div><h3>Mentoring akademik &amp; mental support</h3><p>Bukan cuma diajarin materi, tapi juga dipersiapkan secara mental untuk ujian besar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="peek sec" id="sneakpeek">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Study session at Vecalss Private</span>
+        <h2 class="sticker" style="margin-top:12px">SNEAK PEEK</h2>
+        <p class="sub">Intip langsung suasana sesi private: coretan pembahasan soal bareng tutor, sampai catatan, PR, dan latihan tambahan yang dikirim setelah kelas.</p>
+      </div>
+    </div>
+    <div class="peek-layout">
+      <div class="story" id="story" aria-roledescription="carousel" aria-label="Sneak peek sesi Vecalss Private">
+        <div class="bars" id="bars" aria-hidden="true"></div>
+        <button class="tap prev" type="button" id="peekPrev" aria-label="Slide sebelumnya"></button>
+        <button class="tap next" type="button" id="peekNext" aria-label="Slide berikutnya"></button>
+      </div>
+      <div class="peek-side">
+        <div class="peek-cap" aria-live="polite">
+          <span class="tagp" id="peekTag"></span>
+          <h3 id="peekTitle"></h3>
+          <p id="peekText"></p>
+        </div>
+        <div class="thumbs" id="thumbs" role="group" aria-label="Pilih slide"></div>
+        <div class="peek-row">
+          <img src="assets/duck6.png" alt="Maskot bebek membaca">
+          <p class="peek-handles">Lebih banyak cuplikan sesi ada di Instagram <b>@vecalss.private</b> dan TikTok/X <b>@vecalss</b>.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -494,6 +553,46 @@ footer b{color:var(--sun);font-family:var(--display);font-weight:400;font-size:1
       navigator.clipboard.writeText('https://bit.ly/VecalssPrivate2026').then(function(){ cp.textContent='Tersalin!'; cp.hidden=false; },function(){ sel(); cp.textContent='Link sudah dipilih, tekan salin.'; cp.hidden=false; });
     }catch(e){ sel(); cp.textContent='Link sudah dipilih, tekan salin.'; cp.hidden=false; }
   });
+
+  // sneak peek stories
+  var P=[
+    ['Basic Mathematics','Limit trigonometri & integral','Langkah demi langkah dicoret bareng tutor sampai ketemu jawabannya.'],
+    ['Math IUP ITB','Persiapan soal IUP ITB','Persamaan lingkaran, sistem persamaan, sampai statistika, dibedah satu per satu.'],
+    ['Basic Mathematics','Logaritma, integral & peluang','Konsep dasar dibangun ulang, lalu langsung dipakai ke bentuk soal.'],
+    ['Private Session','Catatan & PR setelah kelas','Tutor kirim pembahasan, notes sesi, dan soal latihan untuk pertemuan berikutnya.'],
+    ['Private Session','Jadwal yang bisa diatur','Mau geser jam belajar? Tinggal bilang ke tutormu.'],
+    ['Private Session','Latihan tambahan','Materi SIMAK UI, IUP & KKI, plus latihan ekstra buat dikerjakan saat senggang.']
+  ];
+  var story=document.getElementById('story'),bars=document.getElementById('bars'),thumbs=document.getElementById('thumbs'),pi=0,timer=null,start=0,DUR=5000;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  P.forEach(function(x,i){
+    var im=document.createElement('img');im.src='assets/peek'+(i+1)+'.jpg';im.alt='Sneak peek '+x[0]+': '+x[1];if(i===0)im.className='on';story.insertBefore(im,bars);
+    var b=document.createElement('span');b.innerHTML='<i></i>';bars.appendChild(b);
+    var t=document.createElement('button');t.type='button';t.className='thumb';t.setAttribute('aria-label','Slide '+(i+1)+': '+x[1]);
+    t.innerHTML='<img src="assets/peek'+(i+1)+'.jpg" alt="">';t.addEventListener('click',function(){show(i)});thumbs.appendChild(t);
+  });
+  var imgs=story.querySelectorAll('img'),barEls=bars.querySelectorAll('span'),thumbEls=thumbs.querySelectorAll('.thumb');
+  function show(i){
+    pi=(i+P.length)%P.length;
+    imgs.forEach(function(m,j){m.classList.toggle('on',j===pi)});
+    barEls.forEach(function(b,j){b.classList.toggle('done',j<pi);b.firstChild.style.width=j<pi?'100%':'0'});
+    thumbEls.forEach(function(t,j){t.setAttribute('aria-current',j===pi?'true':'false')});
+    document.getElementById('peekTag').textContent=P[pi][0];
+    document.getElementById('peekTitle').textContent=P[pi][1];
+    document.getElementById('peekText').textContent=P[pi][2];
+    start=performance.now();
+  }
+  function tick(now){
+    if(!story.matches(':hover')){
+      var k=Math.min(1,(now-start)/DUR);barEls[pi].firstChild.style.width=(k*100)+'%';
+      if(k>=1)show(pi+1);
+    }else{start=now-parseFloat(barEls[pi].firstChild.style.width||0)/100*DUR}
+    timer=requestAnimationFrame(tick);
+  }
+  document.getElementById('peekPrev').addEventListener('click',function(){show(pi-1)});
+  document.getElementById('peekNext').addEventListener('click',function(){show(pi+1)});
+  show(0);
+  if(!reduce)timer=requestAnimationFrame(tick);
 
   var fd=document.getElementById('finalDuck'); fd.addEventListener('click',function(){ squish(fd); });
 })();
